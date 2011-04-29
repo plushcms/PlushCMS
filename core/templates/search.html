@@ -1,0 +1,57 @@
+{% extends "base.html" %} 
+    {% block content %}
+        <h1>Resaults for: "{{ phrase }}"</h1><br />
+            {% if not posts.object_list %}
+                No results found.
+                <p style="text-align: center; padding: 35px 0 0 0;">Return to <a href="/">homepage</a></p>
+            {% else %}
+                {% for result in posts.object_list %}
+                    {% if result.verbose_name == "News" %}
+                        <h1><a href="/{{ result.url }}">{{ result.title }}</a></h1>
+                        <h5><img src="/img/images/ico.png" alt="" /> Date: {{ result.datetime|date:"Y.m.d" }}</h5>
+
+                        {% if result.text|safe|wordcount > 50 %}
+                            {{ result.text|safe|truncatewords_html:"50" }}
+                            <p class="right"><a href="/{{ result.url }}">More...</a></p><br /><br />
+                        {% else %}
+                            {{ result.text|safe }}
+                        {% endif %}
+
+                        <p>
+                            <strong>Categories:</strong>
+                            {% if result.category.all|length %}
+                                {% for category in result.category.all %}
+                                    <a href="/category/{{ category.url }}/"><img src="/img/{{ category.icon }}" alt="{{ category.title }}" /> {{ category.title }}</a>{% if not forloop.last %},{% endif %}
+                                {% endfor %}
+                            {% else %}
+                                No category
+                            {% endif %}
+                            | <strong>Author: </strong>{{ result.author }}
+
+                            <span class="infocomments">
+                                <strong>Comments:</strong> (<a href="/{{ result.url }}">{{ result.comments_set.count }}</a>)
+                            </span>
+                        </p>
+                    {% endif %}
+
+                    {% if result.verbose_name = "Subpage" %}
+                        <h1><a href="/subpage/{{ result.url }}/">{{ result.title }}</a></h1>
+
+                        {% if result.text|safe|wordcount > 50 %}
+                            {{ result.text|safe|truncatewords_html:"50" }}
+                            <p class="right"><a href="/subpage/{{ result.url }}/">More...</a></p><br /><br />
+                        {% else %}
+                            {{ result.text|safe }}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+        {% if posts.has_previous %}
+            <div class="prev"><a href="/search/{{ posts.previous_page_number }}/?{{ request.GET.urlencode }}"><< Previous results</a></div>
+        {% endif %}
+
+        {% if posts.has_next %}
+            <div class="next"><a href="/search/{{ posts.next_page_number }}/?{{ request.GET.urlencode }}">Next results >></a></div>
+        {% endif %}
+    {% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+    {% block content %}
+        <h1><a href="/{{ news.url }}">{{ news.title }}</a></h1>
+        <h5><img src="img/images/ico.png" alt="" /> Date: {{ news.datetime|date:"Y.m.d" }}</h5>
+
+        {{ news.text|safe }}<br />
+
+        <p>
+            <strong>Categories:</strong>
+            {% if news.category.all|length %}
+                {% for category in news.category.all %}
+                    <a href="/category/{{ category.url }}"><img src="/img/{{ category.icon }}" alt="{{ category.title }}" /> {{ category.title }}</a>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            {% else %}
+                No category
+            {% endif %}
+            | <strong>Author: </strong>{{ news.author }}
+        </p>
+
+        <h4>Comments:</h4>
+        {% if news.comments_set.all %}
+            {% for comment in news.comments_set.all %}
+                <blockquote>
+                    <strong>Nick:</strong>
+
+                    {% if comment.www %}
+                        <a href="{{ comment.www }}">{{ comment.nick }}</a><br />
+                    {% else %}
+                        {{ comment.nick }}<br />
+                    {% endif %}
+                            
+                    <strong>Date:</strong> {{ comment.datetime|date:"Y.m.d, H:i" }}<br /><br />
+
+                    {{ comment.text|striptags }}
+                </blockquote>
+            {% endfor %}<br />
+        {% else %}
+            This news has no comments.<br /><br /><br />
+        {% endif %}
+
+        <h4>Post your comment:</h4>
+            <form action="/{{ news.url }}" method="post">
+                {% csrf_token %}
+                <p>Nick:<br />{{ form.nick }}</p>
+                {{ error.nick }}
+
+                <p>WWW:<br />{{ form.www }}</p>
+                {{ error.www }}
+
+                <p>Text:<br />{{ form.text }}</p>
+                {{ error.text }}
+
+                <p><img src="/captcha.png/news_{{ news.id }}" /></p>
+                <p>Token:<br />{{ form.token }}</p>
+                {{ error.token }}
+
+                {% if tokenValid == "0" %}
+                    <ul class="errorlist"><li>Invalid token.</li></ul>
+                {% endif %}
+
+                <input id="id_submit" type="submit" value="Post" />
+            </form>
+    {% endblock %}

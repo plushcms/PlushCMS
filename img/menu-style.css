@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#navi {
+    float: right;
+    font: 11px verdana, arial, sans;
+    background: #534E4E;
+}
+
+#navi li a {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 15px;
+}
+
+#navi li.selected a {
+    background: #E2E5D2;    
+    color: #000000;
+}
+
+#navi li a:hover, #navi li a.hover {
+    background: #E2E5D2;
+    color: #000000;
+}
+
+#navi li ul {
+    background: #4d4d4d;
+}
+
+#navi li li a {
+    width: 100px;
+    background: #4d4d4d;
+}
+
+#navi li li a:hover {
+    background: #E2E5D2;
+}

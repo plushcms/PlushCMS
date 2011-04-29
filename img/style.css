@@ -1,0 +1,389 @@
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: normal .80em 'trebuchet ms', arial, sans-serif;
+    background: #F4F4EE;
+    color: #5D5D5D;
+}
+
+p {
+    padding: 0 0 20px 0;
+    line-height: 1.7em;
+}
+
+img {
+    border: 0;
+}
+
+h1, h2, h3, h4, h5, h6  {
+    font: normal 175% 'century gothic', arial, sans-serif;
+    color: #43423F;
+    margin: 0 0 10px 0;
+    padding: 15px 0 5px 0;
+}
+
+h2 {
+    font: normal 175% 'century gothic', arial, sans-serif;
+    color: #B60000;
+}
+
+h3 {
+    font: normal 165% 'century gothic', arial, sans-serif;
+}
+
+h4, h5, h6 {
+    margin: 0;
+    padding: 0 0 10px 0;
+    font: normal 120% arial, sans-serif;
+    color: #B60000;
+}
+
+h5, h6 {
+    font: italic 95% arial, sans-serif;
+    color: #888;
+}
+
+h6 {
+    color: #362C20;
+}
+
+a, a:hover {
+    outline: none;
+    text-decoration: none;
+    color: #838800;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #5D5D5D;
+}
+
+.left {
+    float: left;
+    width: auto;
+    margin: 0 10px 0 0;
+}
+
+.right {
+    float: right;
+    width: auto;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+
+.center {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+}
+
+blockquote {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #E5E5DB;
+    background: #FFF;
+}
+
+ul {
+    margin: 2px 0 22px 0;
+}
+
+ul li {
+    list-style-type: circle;
+    margin: 0 0 6px 0;
+    padding: 0 0 4px 5px;
+}
+
+ol {
+    margin: 8px 0 22px 20px;
+}
+
+ol li {
+    margin: 0 0 11px 0;
+}
+
+#main, #logo, #menubar, #content_header, #site_content, #content_footer, #footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main {
+    padding-bottom: 20px;
+}
+
+#header {
+    background: #3A332D;
+    height: 170px;
+    margin: 0 0 30px 0;
+}
+
+#logo {
+    width: 878px;
+    position: relative;
+    height: 134px;
+    background: #3A332D url(images/logo.png) no-repeat;
+}
+
+#logo #logo_text {
+    position: absolute;
+    top: 10px;
+}
+
+#logo h1, #logo h2 {
+    font: normal 280% 'century gothic', arial, sans-serif;
+    border-bottom: 0;
+    text-transform: none;
+    margin: 0 0 0 9px;
+}
+
+#logo_text h1, #logo_text h1 a, #logo_text h1 a:hover {
+    padding: 22px 0 0 0;
+    color: #FFF;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+}
+
+#logo_text h1 a .logo_colour {
+    color: #ECEF01;
+}
+
+#logo_text h2 {
+    font-size: 120%;
+    padding: 4px 0 0 0;
+    color: #A8AA94;
+}
+
+#content_header, #content_footer {
+    width: 940px;
+    background: url(images/content_header.png) no-repeat;
+    height: 14px;
+}
+
+#content_footer {
+    background: url(images/content_footer.png) no-repeat;
+}
+
+#site_content {
+    width: 878px;
+    overflow: hidden;
+    margin: 0 auto 0 auto;
+    padding: 0 20px 20px 40px;
+    background: #FFF;
+    border-left: 1px solid #ECECE0;
+    border-right: 1px solid #ECECE0;
+} 
+
+.sidebar {
+    float: right;
+    width: 190px;
+    padding: 0 15px 20px 15px;
+}
+
+.sidebar ul {
+    width: 178px; 
+    padding: 4px 0 0 0; 
+    margin: 4px 0 30px 0;
+}
+
+.sidebar li {
+    list-style: none; 
+    padding: 0 0 7px 0;
+}
+
+.sidebar li a, .sidebar li a:hover {
+    padding: 0 0 0 35px;
+    display: block;
+    background: transparent url(images/link.png) no-repeat left center;
+} 
+
+.sidebar li a.selected {
+    color: #444;
+    text-decoration: none;
+} 
+
+.rss {
+    height: 26px;
+    padding: 5px 0 0 25px;
+    margin-bottom: 15px;
+    display: block;
+    background: transparent url(images/rss.png) no-repeat left center;
+}
+
+.spacer {
+    padding: 20px 0 20px 0;
+}
+
+.info {
+    float: left;
+}
+
+.infocomments {
+    float: right;
+}
+
+.more {
+    text-align: right;
+}
+
+.next {
+    margin: 10px 30px 0px 0px;
+    float: right;
+}
+
+.prev {
+    margin: 10px 0px 0px 30px;
+    float: left;
+}
+
+.albumy {
+    list-style: none;
+}
+
+.albumy_miniaturka {
+    float: left;
+    margin: 10px 5px 5px 5px;
+}
+
+#content {
+    text-align: justify;
+    width: 613px;
+    padding: 0;
+}
+
+#content ul {
+    margin: 2px 0 22px 0px;
+}
+
+#content ul li {
+    list-style-type: none;
+    background: url(images/bullet.png) no-repeat;
+    margin: 0 0 6px 0;
+    padding: 0 0 4px 25px;
+    line-height: 1.5em;
+}
+
+#footer {
+    width: 916px;
+    font: normal 90% arial, sans-serif;
+    height: 28px;
+    padding: 30px 0 0 0;
+    text-align: center;
+    background: transparent;
+    color: #333;
+    letter-spacing: 0.1em;
+}
+
+#footer a, #footer a:hover {
+    color: #888;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #333;
+}
+
+.search {
+    color: #5D5D5D;
+    border: 1px solid #BBB;
+    width: 134px;
+    padding: 4px;
+    font: 100% arial, sans-serif;
+}
+
+.textarea {
+    color: #5D5D5D;
+    border: 1px solid #BBB;
+    width: 600px;
+    padding: 4px;
+    font: 100% arial, sans-serif;
+}
+
+#id_submit {
+    width: 150px;
+    height: 25px;
+    border: 1px solid #BBB;
+    cursor: hand;
+}
+
+.form_settings {
+    margin: 15px 0 0 0;
+}
+
+.form_settings p {
+    padding: 0 0 4px 0;
+}
+
+.form_settings span {
+    float: left;
+    width: 200px;
+    text-align: left;
+}
+  
+.form_settings input, .form_settings textarea {
+    padding: 5px;
+    width: 299px;
+    font: 100% arial;
+    border: 1px solid #E5E5DB;
+    background: #FFF;
+    color: #47433F;
+}
+
+.form_settings .submit {
+    font: 100% arial;
+    border: 1px solid;
+    width: 99px;
+    margin: 0 0 0 212px;
+    height: 33px;
+    padding: 2px 0 3px 0;
+    cursor: pointer;
+    background: #3B3B3B;
+    color: #FFF;
+}
+
+.form_settings textarea, .form_settings select {
+    font: 100% arial;
+    width: 299px;
+}
+
+.form_settings select {
+    width: 310px;
+}
+
+.form_settings .checkbox {
+    margin: 4px 0;
+    padding: 0;
+    width: 14px;
+    border: 0;
+    background: none;
+}
+
+.separator {
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #D9D5CF;
+    border-bottom: 1px solid #FFF;
+    margin: 0 0 20px 0;
+}
+
+.search_submit {
+    width: 33px;
+    height: 33px;
+    background-image: url(images/search.png);
+    background-color: white;
+    border: 0px;
+    cursor: hand;
+    margin: 0 0 -9px 5px;
+}
+
+#menubar {
+    width: 1100px;
+    margin: 1px 0 0 0;
+    position: absolute;
+}

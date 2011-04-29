@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="PlushCMS v0.1 - demo" /> 
+    <meta name="keywords" content="plushcms, cms, python, django, Piotr Tynecki, Paweł Topór" />
+    <meta name="Author" content="Plush v0.1.1" />
+    <title>PlushCMS v0.1.1 - demo</title>
+    <link rel="alternate" type="application/rss+xml" href="/feeds/rss/" title="RSS 2.0" />
+    <link rel="stylesheet" type="text/css" href="/img/style.css" />
+    <link rel="stylesheet" type="text/css" href="/img/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="/img/dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="/img/menu-style.css" />
+    <link rel="stylesheet" type="text/css" href="/img/js/fancybox/jquery.fancybox-1.3.4.css" />
+
+    <script type="text/javascript" src="/img/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/img/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="/img/js/fancybox/jquery.easing-1.3.pack.js"></script>
+    <script type="text/javascript" src="/img/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="/img/js/dropdownmenu.js"></script>
+    <script type="text/javascript" src="/img/js/start_fancybox.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h1><a href="/">Plush<span class="logo_colour">CMS</span> v0.1.1</a></h1>
+                    <h2>CMS system written in Python and Django</h2>
+                </div>
+            </div>
+
+            <div id="menubar">
+                {% load tree_menu_tags %}
+                {% show_menu "Main menu" "ordered-list" %}
+            </div>
+        </div>
+
+        <div id="content_header"></div>
+        <div id="site_content">
+            <div class="sidebar">
+                <h3>Search:</h3>
+                <form method="get" action="/search/1/?{{ request.GET.urlencode }}">
+                    <p>{{ search.phrase }}
+                    <input class="search_submit" type="submit" value="" /></p>
+                </form>
+
+                <h3>Subscription:</h3>
+                <p class="rss"><a href="{% url feeds_rss %}">Read RSS feeds</a></p>
+
+                {% if partOfTopNews %}
+                    <h3>Top news:</h3>
+
+                    {% for news in topNews %}
+                        <p><a href="/{{ news.url }}">{{ news.title }}</a></p>
+                    {% endfor %}
+                {% endif %}
+
+                {% if numberOfCategories %}
+                    <h3>Categories:</h3>
+
+                    {% for category in categories reversed %}
+                        <p><img src="/img/{{ category.icon }}" alt="{{ category.title }}" /> <a href="/category/{{ category.url }}/">{{ category.title }}</a></p>
+                    {% endfor %}
+                {% endif %}
+
+                {% if numberOfLinks %}
+                    <h3>Links:</h3>
+
+                    <ul>
+                        {% for link in links reversed %}
+                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if numberOfPartners %}
+                    <h3>Partners:</h3>
+
+                    {% for partner in partners reversed %}
+                        <p><a href="{{ partner.url }}"><img src="/img/{{ partner.logo }}" alt="{{ partner.title }}" /></a></p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div id="content_footer"></div>
+        <div id="footer">Copyright &copy;2010-2011 by <a href="http://tynecki.pl">Piotr Tynecki</a> and <a href="http://ptopor.pl">Paweł Topór</a></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{% extends "base.html" %} 
+    {% block content %}
+        {% if album %}
+            <h2 class="title"><a href="../">{{ site.title }}</a> - {{ album }}</h2>
+        {% else %}
+            {% if directory %}
+                <h2 class="title"><a href="../">{{ site.title }}</a> - {{ directory }}</h2>
+            {% else %}
+                {% if error = "404" %}
+                    <h2 class="title">404</h2><br />
+                    Page not found.<br />
+                    <p style="text-align: center; padding: 35px 0 0 0;">Return to <a href="/">homepage</a></p>
+                {% endif %}
+
+                {% if error = "500" %}
+                    <h2 class="title">500</h2><br />
+                    Internal server error.<br />
+                    <p style="text-align: center; padding: 35px 0 0 0;">Return to <a href="/">homepage</a></p>
+                {% else %}
+                    <h2 class="title">{{ site.title }}</h2>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+        {{ site.text|safe }}
+
+        {% if site.selectedModule == 0 %}
+            <br />You can also use this form.<br /><br />
+            <form action="/subpage/{{ site.url }}/" method="post">
+                {% csrf_token %}
+                <p><label for="id_nick">First and Second name:</label><br />
+                {{ form.nick }}</p>
+                {{ form.nick.errors }}
+
+                <p><label for="id_email">E-mail:</label><br />
+                {{ form.email }}</p>
+                {{ form.email.errors }}
+
+                <p><label for="id_temat">Topic:</label><br />
+                {{ form.topic }}</p>
+                {{ form.topic.errors }}
+
+                <p><label for="id_wiadomosc">Text:</label><br />
+                {{ form.message }}</p>
+                {{ form.message.errors }}
+
+                <p><img src="/captcha.png/subpage_{{ site.id }}" /></p>
+                <p><label for="id_wiadomosc">Token:</label><br />
+                {{ form.token }}</p>
+
+                {% if tokenValid > "0" %}
+                    <ul class="errorlist"><li>Invalid value.</li></ul>
+                {% endif %}
+
+                <input id="id_submit" type="submit" value="Send an e-mail" />
+            </form>
+        {% endif %}
+
+        {% if site.selectedModule == 1 %}
+            <ul class="albumy">
+            {% if combo %}
+                {% for album, photo in combo.items reversed %}
+                    {% if not photo %}
+                        <li class="albumy_miniaturka"><img src="/img/images/nophoto.png" alt="" /><br /><strong>{{ album }}</strong></li>
+                    {% else %}
+                        {% if not forloop.counter0|divisibleby:4 %}
+                            <li class="albumy_miniaturka"><a href="{{ album.directory }}"><img src="/img/{{ photo }}" /></a><br /><strong>{{ album }}</strong></li>
+                        {% else %}
+                            </ul>
+
+                            <ul class="albumy">
+                                <li class="albumy_miniaturka"><a href="{{ album.directory }}"><img src="/img/{{ photo }}" /></a><br /><strong>{{ album }}</strong></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if photos %}
+                {% for photo in photos reversed %}
+                    {% if not forloop.counter|divisibleby:5 %}
+                        <li class="albumy_miniaturka"><a class="group" rel="miniatury" title="{{ photo.description }}" href="/img/{{ photo.photo }}"><img src="/img/{{ photo.photoMin }}" /></a></li>
+                    {% else %}
+                        </ul>
+
+                        <div style="clear: left;"></div>
+
+                        <ul class="albumy">
+                            <li class="albumy_miniaturka"><a class="group" rel="miniatury" title="{{ photo.description }}" href="/img/{{ photo.photo }}"><img src="/img/{{ photo.photoMin }}" /></a></li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+        </ul>
+
+        {% if site.selectedModule == 2 %}
+            {% if directories %}
+                {% for directory, numberOfFiles in directories reversed %}
+                    {% if numberOfFiles %}
+                        <p><img src="img/icons/folder.png" /><a href="{{ directory.directory }}"> {{ directory }} ({{ numberOfFiles }})</p></a>
+                    {% else %}
+                        <p><img src="img/icons/empty.png" /> {{ directory }} ({{ numberOfFiles }})</p></a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if files %}
+                {% for file in files reversed %}
+                    <p><img src="img/icons/file.png" /><a href="/img/uploadFiles/{{ file.parent.directory }}/{{ file.showFileName }}"> {{ file.title }}</a>
+                    <br />{{ file.description }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}

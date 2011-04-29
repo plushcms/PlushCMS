@@ -1,0 +1,9 @@
+{% load tree_menu_tags %}
+
+{% if menu.root_item.children %}
+    <ul id="navi" class="dropdown dropdown-horizontal">
+        {% for menu_item in menu.root_item.children %}
+            {% show_menu_item menu_item %}
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -1,0 +1,18 @@
+{% extends "admin/object_history.html" %}
+{% load i18n %}
+
+{% block extrahead %}{{ block.super.super }}
+    <script type="text/javascript" src="../../../../../../../jsi18n/"></script>
+    {{ media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="../../../../../../">{% trans "Początek" %}</a> &rsaquo;
+        <a href="../../../../">{% trans "Menus" %}</a> &rsaquo;
+        <a href="../../../">{{ menu.name }}</a> &rsaquo;
+        {% trans 'Items' %} &rsaquo;
+        <a href="../">{{ object|escape|truncatewords:"18" }}</a> &rsaquo;
+        {% trans 'Historia' %} &rsaquo;
+    </div>
+{% endblock %}

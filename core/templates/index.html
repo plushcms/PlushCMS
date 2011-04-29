@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for news in posts.object_list %}
+        <h1><a href="/{{ news.url }}">{{ news.title }}</a></h1>
+        <h5><img src="/img/images/ico.png" alt="" /> Date: {{ news.datetime|date:"Y.m.d" }}</h5>
+
+        {% if news.text|safe|wordcount > 50 %}
+            {{ news.text|safe|truncatewords_html:"50" }}
+            <p class="right"><a href="/{{ news.url }}">More...</a></p><br /><br />
+        {% else %}
+            {{ news.text|safe }}
+        {% endif %}
+
+        <div class="info">
+            <strong>Categories:</strong>
+            {% if news.category.all|length %}
+                {% for category in news.category.all %}
+                    <a href="/category/{{ category.url }}/"><img src="/img/{{ category.icon }}" alt="{{ category.title }}" /> {{ category.title }}</a>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            {% else %}
+                None
+            {% endif %}
+            | <strong>Author: </strong>{{ news.author }}
+        </div>
+
+        <div class="infocomments">
+            <strong>Comments:</strong> (<a href="/{{ news.url }}">{{ news.comments_set.count }}</a>)
+        </div>
+
+        <div class="spacer"></div>
+    {% endfor %}
+
+    {% if posts.has_previous %}
+        <div class="prev"><a href="/site/{{ posts.previous_page_number }}/"><< Previous news</a></div>
+    {% endif %}
+
+    {% if posts.has_next %}
+        <div class="next"><a href="/site/{{ posts.next_page_number }}/">Next news >></a></div>
+    {% endif %}
+{% endblock %}
