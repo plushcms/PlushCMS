@@ -9,7 +9,7 @@ from django.utils.translation import ugettext as _
 class MenuItem(models.Model):
     parent = models.ForeignKey("self", verbose_name = ugettext_lazy("Parent"), null = True, blank = True)
     caption = models.CharField(ugettext_lazy("Name"), max_length = 50, help_text = "Enter a name which doesn't exceed 50 characters.")
-    url = models.CharField(ugettext_lazy("Address"), max_length = 200, blank = False, help_text = "Enter the correct web address.")
+    url = models.CharField(ugettext_lazy("Address"), max_length = 200, blank = False, help_text = "Enter the correct web address. Remember to add /subpage/ before.")
     level = models.IntegerField(ugettext_lazy("Level"), default = 0, editable = False)
     rank = models.IntegerField(ugettext_lazy("Rank"), default = 0, editable = False)
     menu = models.ForeignKey("Menu", related_name = "contained_items", verbose_name = ugettext_lazy("Menu"), null = True, blank = True, editable = False)

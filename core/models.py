@@ -46,6 +46,7 @@ class NewsCategory(models.Model):
         """Generate the url from the category name"""
         self.url = slugify(unicode(self.title.replace(u"ł", "l").replace(u"Ł", "L")))
         super(NewsCategory, self).save(force_insert, force_update)
+        scaleImage(self.icon.path, width = 13)
 
     def __str__(self):
         return str(self.title)

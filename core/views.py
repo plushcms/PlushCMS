@@ -119,7 +119,7 @@ def showSubpage(request, subpage):
                 message = message.replace("\n", "<br />")
 
                 try:
-                    sendEmail(SERVER, PORT, LOGIN, PASSWORD, "PlushCMS v0.1.1 <%s>" % SENDER, RECIPIENT, "PlushCMS v0.1.1 - Contact form", "<b>Topic:</b> %s<br /><br /><b>Nick:</b> %s<br /><b>E-mail:</b> %s<br /><br /><b>%s:</b> <br />%s" % (topic, nick, email, "Message".decode("utf-8"), message))
+                    sendEmail(SERVER, PORT, LOGIN, PASSWORD, "PlushCMS v0.1.2 <%s>" % SENDER, RECIPIENT, "PlushCMS v0.1.2 - Contact form", "<b>Topic:</b> %s<br /><br /><b>Nick:</b> %s<br /><b>E-mail:</b> %s<br /><br /><b>%s:</b> <br />%s" % (topic, nick, email, "Message".decode("utf-8"), message))
 
                     return HttpResponseRedirect("/subpage/contact/info/")
 

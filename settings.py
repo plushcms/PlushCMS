@@ -1,7 +1,11 @@
 #-*- coding: utf-8 -*-
 
-PLUSH_VERSION = "0.1.1"
-UPDATE_DATE = "29.04.11"
+from django import VERSION
+
+VERSION = ".".join(map(str, VERSION[0:3]))
+
+PLUSH_VERSION = "0.1.2"
+UPDATE_DATE = "07.08.11"
 
 # Configure contact form 
 SERVER = ""
@@ -17,9 +21,12 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = ()
 MANAGERS = ADMINS
 
+if VERSION >= "1.3.0":
+    LOGIN_REDIRECT_URL = "/admin/"
+
 DATABASES = {
     "default": {
-        "ENGINE": "",
+        "ENGINE": "", # Rememeber to add django.db.backends before (required in Django 1.3)
         "NAME": "",
         "USER": "",
         "PASSWORD": "",
@@ -62,7 +69,6 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.request",
@@ -74,14 +80,21 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "plushcms.processors.showSystemDetails",
 )
 
+if VERSION >= "1.3.0":
+    TEMPLATE_CONTEXT_PROCESSORS += ("django.contrib.auth.context_processors.auth",)
+elif VERSION >= "1.2.0" and VERSION < "1.3.0":
+    TEMPLATE_CONTEXT_PROCESSORS += ("django.core.context_processors.auth",)
+
 MIDDLEWARE_CLASSES = (
     "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.middleware.csrf.CsrfResponseMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
 )
+
+if VERSION >= "1.3.0":
+    MIDDLEWARE_CLASSES += ("django.middleware.csrf.CsrfResponseMiddleware",)
 
 ROOT_URLCONF = "plushcms.urls"
 

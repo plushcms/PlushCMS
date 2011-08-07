@@ -4,6 +4,8 @@ About PlushCMS
 PlushCMS is a [Python](http://python.org/) based Content Management System with Django's admin interface.  
 At this stage it's dedicated as a blogging platform or portal management system.
 
+Screenshots: [1](http://plushcms.alwaysdata.net/screenshots/screen1.png), [2](http://plushcms.alwaysdata.net/screenshots/screen2.png), [3](http://plushcms.alwaysdata.net/screenshots/screen3.png)
+
 PlushCMS basic feature list
 ---------------------------
 
@@ -13,15 +15,16 @@ Currently, the main modules available for PlushCMS cover the following fields of
 * [http://docs.djangoproject.com/en/dev/topics/auth/](http://docs.djangoproject.com/en/dev/topics/auth/)
 
 ### b) core application
-* Categories
-* Comments (captcha protection systems)
-* Links
-* News (multiple category, working copy flag, top news flag)
-* Partners (auto logo resize)
-* Subpages (Standard subpage, Contact form with captcha protection systems, *Gallery module, *Storage module)
-* RSS 2.0
-* Search engine (comparison with title and content of news and subpage)
-* Pagination (news, search results, news from category)
+* Categories, (auto icon resize)
+* Comments (captcha protection systems),
+* Links,
+* News (multiple category, working copy flag, top news flag),
+* Partners (auto logo resize),
+* Subpages (Standard subpage, Contact form with captcha protection systems, *Gallery module, *Storage module),
+* RSS 2.0,
+* Search engine (comparison with title and content of news and subpage),
+* Pagination (news, search results, news from category),
+* 404 and 500 templates.
 
 *gallery and storage application required
 
@@ -45,7 +48,7 @@ Extras
 How to install (on localhost)?
 ==============================
 
-1. Download PlushCMS v0.1.1 from Github
+1. Download PlushCMS v0.1.2 from Github
 2. Configure DATABASES dict in settings.py
 3. Configure contact form in settings.py (if you want to use Contact form module)
 4. Set MEDIA\_ROOT, MEDIA\_GALLERY, MEDIA\_STORAGE, MEDIA\_FONT, MEDIA\_URL, TEMPLATE\_DIRS in settings.py just like the example:
@@ -78,8 +81,8 @@ How to install (on localhost)?
 Details
 =======
 
-Version: **0.1.1**  
-Release date: **29.04.2011**  
+Version: **0.1.2**  
+Release date: **07.08.2011**  
 Requirements: **Python 2.5+**, **Django 1.2+**, **PIL 1.1.7**
 
 Team

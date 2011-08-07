@@ -5,9 +5,9 @@ from plushcms.core.models import News
 from django.contrib.syndication.views import Feed
 
 class RSS(Feed):
-    title = "PlushCMS v0.1.1"
+    title = "PlushCMS v0.1.2"
     link = "/"
-    description = "PlushCMS v0.1.1 - CMS system written in Python and Django"
+    description = "PlushCMS v0.1.2 - CMS system written in Python and Django"
 
     def items(self):
         numberOfNews = 10
