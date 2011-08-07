@@ -15,7 +15,7 @@ Currently, the main modules available for PlushCMS cover the following fields of
 * [http://docs.djangoproject.com/en/dev/topics/auth/](http://docs.djangoproject.com/en/dev/topics/auth/)
 
 ### b) core application
-* Categories, (auto icon resize)
+* Categories (auto icon resize),
 * Comments (captcha protection systems),
 * Links,
 * News (multiple category, working copy flag, top news flag),
