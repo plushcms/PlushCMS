@@ -43,7 +43,7 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
-# JavaScript, CSS nad image reference path ("/img" is static)
+# JavaScript, CSS and image reference path ("/img" is static)
 MEDIA_ROOT = "/img"
 # Upload photos directory ("/img/photoGallery" is static)
 MEDIA_GALLERY = "/img/photoGallery"
