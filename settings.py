@@ -93,7 +93,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.messages.middleware.MessageMiddleware",
 )
 
-if VERSION >= "1.3.0":
+if "1.2.0" <= VERSION < "1.3.0":
     MIDDLEWARE_CLASSES += ("django.middleware.csrf.CsrfResponseMiddleware",)
 
 ROOT_URLCONF = "plushcms.urls"
