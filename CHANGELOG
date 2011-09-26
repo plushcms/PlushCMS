@@ -1,4 +1,4 @@
 ==== PlushCMS v0.1.2 (07.08.2011) ====
 - support for Django 1.3,
-- cotegory icon is auto scaling now (13px default),
-- reeditet treemenus help_text arguments.
+- category icon is auto scaling now (13px default),
+- reedited treemenus help_text arguments.
